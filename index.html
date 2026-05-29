@@ -527,6 +527,48 @@
     100% { opacity: 0; transform: translateY(-160px) scale(0.3) rotate(40deg); }
   }
 
+  /* ---- SHARE HINT ---- */
+  .share-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 11px 18px;
+    background: rgba(255,255,255,0.38);
+    border: 1px dashed rgba(184,196,212,0.6);
+    border-radius: 12px;
+    transition: all 0.5s ease;
+  }
+  .share-hint.hidden {
+    opacity: 0;
+    transform: scale(0.97);
+    pointer-events: none;
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow: hidden;
+  }
+  .share-hint-icon { font-size: 15px; }
+  .share-hint-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.4;
+    text-align: center;
+  }
+  .share-hint-arrow {
+    font-size: 14px;
+    color: var(--peach);
+    animation: bounceDown 1.4s ease-in-out infinite;
+  }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(4px); }
+  }
+
   /* Mobile refinements */
   @media (max-width: 480px) {
     .page { padding: 36px 14px 70px; }
@@ -559,7 +601,7 @@
 
   <!-- HEADER -->
   <header class="header">
-    <div class="permit-stamp">Official Document · SQD-2025</div>
+    <div class="permit-stamp">Official Document · SQD-2026</div>
     <h1 class="main-title" id="mainTitle">🌧️ Official Friday Survival Permit</h1>
     <p class="issued-by">Issued by Side Quest Department (SQD)</p>
     <div class="holder-card">
@@ -623,6 +665,13 @@
     </div>
   </div>
 
+  <!-- SHARE HINT -->
+  <div class="share-hint" id="shareHint">
+    <span class="share-hint-icon">🐧</span>
+    <span class="share-hint-text">Complete all tasks today &amp; share your permit with SQD to unlock the reward</span>
+    <span class="share-hint-arrow">↓</span>
+  </div>
+
   <!-- REWARD CARD -->
   <div class="reward-card" id="rewardCard">
     <div class="reward-title shimmer-text">✨ PERMIT SUCCESSFULLY REDEEMED ✨</div>
@@ -640,7 +689,7 @@
   <footer class="footer">
     <p class="footer-signed">Signed,</p>
     <p class="footer-dept">Side Quest Department (SQD) 🐧</p>
-    <p class="footer-tagline">"Creating weather-related side quests since 2025."</p>
+    <p class="footer-tagline">"Creating weather-related side quests since 2026."</p>
   </footer>
 
 </div>
@@ -716,6 +765,7 @@
     const reward = document.getElementById('rewardCard');
     if (done === total) {
       reward.classList.add('visible');
+      document.getElementById('shareHint').classList.add('hidden');
       if (!toast100Shown) {
         toast100Shown = true;
         showToast('Side Quest Department officially approves this behaviour.');
