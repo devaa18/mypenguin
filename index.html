@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>TRANSMISSION // EP.01</title>
+<meta name="description" content="A transmission has been received.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="crt-overlay" aria-hidden="true"></div>
+
+<div id="app">
+
+  <header class="hud-bar">
+    <span class="hud-tag">PROTOCOL</span>
+    <span class="hud-episode">EP.&nbsp;01</span>
+  </header>
+
+  <main id="screens">
+
+    <!-- SCREEN 1 : BOOT -->
+    <section class="screen active" id="screen-boot" data-screen="boot">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="screen-inner boot-inner">
+        <div class="terminal" id="boot-terminal"></div>
+      </div>
+      <button class="tap-continue" id="boot-continue" hidden type="button">TAP TO CONTINUE</button>
+    </section>
+
+    <!-- SCREEN 2 : IDENTIFICATION -->
+    <section class="screen" id="screen-identify" data-screen="identify">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="screen-inner">
+        <h2 class="section-heading" id="identify-heading">TARGET IDENTIFIED</h2>
+        <div class="character-stage">
+          <div class="char-frame" id="penguin-stage"></div>
+        </div>
+        <div class="id-card">
+          <div class="id-row"><span class="id-label">TARGET</span><span class="id-value">THE PENGUIN</span></div>
+          <div class="id-row"><span class="id-label">STATUS</span><span class="id-value status-active"><i class="status-dot"></i>ACTIVE</span></div>
+        </div>
+        <div class="system-line" id="identify-msg"></div>
+        <button class="btn btn-primary" id="verify-btn" type="button">VERIFY</button>
+      </div>
+      <button class="tap-continue" id="identify-continue" hidden type="button">CONTINUE</button>
+    </section>
+
+    <!-- SCREEN 3 : COUNTDOWN -->
+    <section class="screen" id="screen-countdown" data-screen="countdown">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="screen-inner">
+        <div class="countdown-date">24&nbsp;NOVEMBER</div>
+        <div class="countdown-days">
+          <span id="countdown-number">0</span>
+          <span class="countdown-suffix">DAYS</span>
+        </div>
+        <div class="countdown-label">T&#8211;MINUS</div>
+        <div class="system-line" id="countdown-msg"></div>
+      </div>
+      <button class="tap-continue" id="countdown-continue" hidden type="button">CONTINUE</button>
+    </section>
+
+    <!-- SCREEN 4 : THE FOX -->
+    <section class="screen" id="screen-fox" data-screen="fox">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="screen-inner">
+        <div class="character-stage fox-stage-wrap">
+          <div class="char-frame" id="fox-stage"></div>
+        </div>
+        <div class="system-line" id="fox-msg1"></div>
+        <div class="reveal-name" id="fox-name" hidden>THE&nbsp;FOX.</div>
+        <div class="system-line" id="fox-msg2"></div>
+        <button class="btn btn-secondary" id="view-protocol-btn" hidden type="button">VIEW PROTOCOL</button>
+      </div>
+      <button class="tap-continue" id="fox-continue" hidden type="button">CONTINUE</button>
+    </section>
+
+    <!-- SCREEN 5 : ANNOUNCEMENT -->
+    <section class="screen" id="screen-announce" data-screen="announce">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <div class="screen-inner">
+        <div class="announce-title">BIRTHDAY&nbsp;PROTOCOL</div>
+        <div class="announce-status">STATUS: <span class="status-active"><i class="status-dot"></i>ACTIVE</span></div>
+        <div class="id-card slim">
+          <div class="id-row"><span class="id-label">TARGET</span><span class="id-value">THE PENGUIN</span></div>
+        </div>
+        <div class="countdown-days small"><span>50</span><span class="countdown-suffix">DAYS</span></div>
+        <div class="system-line" id="announce-msg"></div>
+        <button class="btn btn-primary" id="ack-btn" type="button">ACKNOWLEDGE</button>
+        <div class="system-line" id="ack-response" hidden></div>
+        <div class="fox-wave-slot" id="fox-wave-slot"></div>
+      </div>
+    </section>
+
+    <!-- SCREEN 6 : END / IDLE -->
+    <section class="screen" id="screen-end" data-screen="end">
+      <div class="screen-inner end-inner">
+        <div class="end-title">TRANSMISSION COMPLETE</div>
+        <div class="end-tag">T&#8211;50</div>
+        <div class="character-stage">
+          <div class="char-frame" id="penguin-end-stage"></div>
+        </div>
+        <div class="standby"><span class="standby-dot"></span>SYSTEM STANDBY</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal-overlay" hidden>
+  <div class="modal-file" role="dialog" aria-modal="true" aria-label="Classified file">
+    <div class="modal-header">
+      <span>CLASSIFIED FILE</span>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
